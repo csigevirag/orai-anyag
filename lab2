@@ -1,0 +1,42 @@
+#ex1
+#while True:
+    #try:
+        #n=int(input("Give me any values:"))
+        #print(n)
+        #break
+    #except ValueError:
+       #print("You should give me a number!")
+#ex3 Lennister számoló
+#def wordCounter(fin,word):
+ #   n=0
+  #  for row in fin:
+   #     words=row.split(" ")
+    #    for w in words:
+     #       if word in w:
+      #          n+=1
+    #return n
+
+#ex4 Nagyból kicsi,kicsiből nagy
+def csere(str):
+    restr=''
+    for c in fin:
+        if 'A'<= c<='Z':
+            restr+=c.lower()
+        elif 'a'<=c<='z':
+            restr+=c.upper()
+        else:
+            restr+=c
+    return restr
+
+
+try:
+    fin=open("input.txt",'r')
+    fout=open("output.txt","w")
+
+    for row in fin:
+        print(csere(row),file=fout,end='')
+    fin.close()
+    fout.close()
+    #print(wordCounter(fin,"Lannister"))
+except FileNotFoundError:
+    print("A fájl név nem található.")
