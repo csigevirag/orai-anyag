@@ -1,0 +1,74 @@
+import numpy as np
+def minMaxInd(v):
+    min=v[0]
+    max=v[0]
+    minh=0
+    maxh=0
+    for i in range(0,v.size):
+        if v[i]>max:
+            max=v[i]
+            maxh=i
+        if v[i]<min:
+            min=v[i]
+            minh=i
+    print('Min:{:.4f} at {}. and max: {:.4f} at {}.'.format(min,minh,max,maxh))
+#ex1
+#a=np.arange(10,50).reshape((2,5,4))
+#b=a.copy()
+#b=b[::-1]
+#b[20]=100
+#print(a)
+#print(b)
+#print(a.ndim)
+#print(a.shape)
+#print(a.size)
+#print(a.dtype)
+#print(a[1][4][3])
+
+#ex2
+#v=np.random.random(30)
+#print(v)
+#print(v.min())
+#tmp=v==v.min()
+#print(np.where(tmp))
+#print(v.max())
+#tmp=v==v.max()
+#print(np.where(tmp))
+#minMaxInd(v)
+
+#ex3
+#tmp=v==v.max()
+#v[tmp]=-1
+#print(v)
+
+#ex4
+#def sortVector(v):
+ #   for i in range(0,len(v)):
+  #      for j in range(i+1,len(v)):
+   #         if v[i]>v[j]:
+    #            v[i],v[j]=v[j],v[i]
+    #return v
+
+
+#v=np.random.randint(0,50,30)
+#print(v)
+#V=sortVector(v)
+#v.sort()
+#print(v)
+
+#ex5
+#v=np.random.randint(0,20,30)
+#print(v)
+#tmp1=v>=3
+#print(tmp1)
+#tmp2=v<=8
+#print(tmp2)
+#print(v[tmp1 & tmp2])
+#v[tmp1 & tmp2]=-1*v[tmp1 & tmp2]
+#print(v)
+
+#ex6
+n=int(input('Give me a number:'))
+v=np.random.randint(0,20,30)
+print(v)
+print(np.where(np.abs(v-n)==np.min(np.abs(v-n))))
