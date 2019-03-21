@@ -1,0 +1,28 @@
+#ex1
+#def paros():
+    #n=int(input("Adj meg egy számot:"))
+    #while n!=0:
+        #if n%2==0:
+            #print('{} páros'.format(n))
+        #else:
+            #print('{} páratlan'.format(n))
+        #n=input(int("Adj meg egy számot:"))
+
+#main:
+#paros()
+
+#ex2
+def lnko(a,b):
+    a=int(a)
+    b=int(b)
+    if a>b:
+        a,b=b,a
+    n=0
+    for i in range(1,a+1):
+        if a%i==0 and b%i==0:
+            n=i
+    return n
+
+str=(input('Adj meg 2 számot:')
+a,b=str.split(',')
+print(lnko(a,b))
