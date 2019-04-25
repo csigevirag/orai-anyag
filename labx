@@ -69,3 +69,12 @@ else:
     except KeyError:
         print('Nem megfelelő értéket adott!')
         pred=input('Give me the next numbers\'s propery:')
+
+primers=set(range(2,5001))
+p=2
+while p<=5000:
+    if p in set:
+        for k in range(p+p,5001,p):
+            primers.discard(k)
+    p+=1
+print(primers)
