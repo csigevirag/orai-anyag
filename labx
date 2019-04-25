@@ -1,0 +1,22 @@
+A= {1,2,3,3.14,True,'a','b','string',10,11}
+B=set(range(1,11))
+
+print(A)
+print(B)
+
+C=A & B
+print(C)
+
+D= A | B
+print(D)
+
+E=A^B
+print(E)
+
+F=A-B
+print(F)
+
+A.add(9)
+A.discard(3.14)
+for i in A:
+    print(i,i in B)
