@@ -20,3 +20,52 @@ A.add(9)
 A.discard(3.14)
 for i in A:
     print(i,i in B)
+
+# 1.feladat
+wheel=set(range(1,37))
+red={1,3,5,7,12,14,16,18,19,21,23,25,27,30,32,34,36}
+black=wheel-red
+even=set(range(2,37,2))
+odd=wheel-even
+small=set(range(0,19))
+great=wheel-small
+wheel.update({0,'00'})
+
+money=int(input('Mennyi pénze van?'))
+properties={'red':red,'black':black,'even':even,'odd':odd,'small':small,'great':great,'green':(0,'00')}
+bet=int(input('Mennyit szeretne feltenni?'))
+pred=input('Give me the next numbers\'s propery:')
+while bet!=0:
+    try:
+        properties[pred]
+        flag=False
+        x=random.choice(list(wheel))
+        if x in {0,'00'}:
+            print('{} is green'.format(x))
+            if pred=='green':
+                flag=True
+        else:
+            for k in properties:
+                if x in properties[k]:
+                    print('{} is {}'.format(x,k))
+                    if pred==k:
+                        flag=True
+        if flag:
+            print('You won!')
+            money+=bet
+            print('Ennyi pénze maradt: ',money)
+        else:
+            print('You lost!')
+            money-=bet
+            print('Ennyi pénze maradt: ',money)
+            if money<=0:
+                break
+        bet=int(input('Mennyit szeretne feltenni?'))
+        pred=input('Give me the next numbers\'s propery:')
+if money<=0:
+    print('Elvesztette az összes pénzét!')
+else:
+    print('Ennyit nyert:{} '.format(money))
+    except KeyError:
+        print('Nem megfelelő értéket adott!')
+        pred=input('Give me the next numbers\'s propery:')
