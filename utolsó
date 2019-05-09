@@ -1,0 +1,56 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+def readData(fin,delimiter):
+    ls=[]
+    for row in fin:
+        tmp=row.split(delimiter)
+        for i in range(0,len(tmp)):
+            tmp[i]=float(tmp[i])
+            ls.append(tmp)
+    return ls
+
+def MSE(X,Y,theta):
+    m=len(X)
+    return np.sum((theta.dot(X.T)-Y)**2)*(1/(2*m))
+
+def SGD(X,Y,theta,alpha,num_iter):
+    J_history=[]
+    m=len(X)
+    for i in range(0,num_iter):
+        h=theta.dot(X.T)
+        theta-=(alpha/m)*(X.T.dot(h-Y))
+        J_history.append(MSE(X,Y,theta))
+        if i%50==0:
+            y_new=theta.dot(X)
+    return (theta,J_history)
+
+#MAIN
+fin=open('ex1.txt','r')
+datas=readData(fin,',')
+print(datas)
+datas=np.array(datas)
+X=datas[:,0]
+Y=datas[:,1]
+plt.plot(X,Y,'b*')
+plt.xlabel('Population in 10000s')
+plt.ylabel('Profit in 10000$')
+# plt.show()
+
+a=-10
+b=10
+theta=np.array([a,b])
+X=np.stack((np.ones(len(X)),X),axis=1)
+y_new=theta.dot(X.T)
+print(y_new)
+plt.plot(X[:,1],y_new,'r*')
+# plt.show()
+print(MSE(X,Y,theta))
+
+theta,J_hist=SGD(X,Y,theta,0.01,1000)
+y_new=theta.dot(X.T)
+plt.plot(X[:,1],y_new,'g-')
+plt.show()
+print(theta)
+print(MSE(X,Y,theta))
+
